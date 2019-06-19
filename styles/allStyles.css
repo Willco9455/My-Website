@@ -1,0 +1,33 @@
+body{
+    font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
+    background-image: url("./images/cow\ and\ calf.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.banner h1 {
+    margin:0px;
+    font-size: 30px;
+    float: left;
+}
+
+.banner ul{
+    padding-top:10px;
+    list-style: none;
+}
+
+.banner li {
+    float: left;
+    padding-right: 50px;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    padding-bottom: 100px;
+}
+
+h2{
+    text-align: center;
+}

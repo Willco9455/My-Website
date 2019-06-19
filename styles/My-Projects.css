@@ -1,0 +1,22 @@
+#walkingProject{
+    background-image: url("./images/walking\ icon.jpg");
+    background-size: cover;
+    width: fit-content;
+    height: 290px;
+    background-color: white;
+    margin-left: 10%;
+}
+.aProject p{
+    padding-top: 250px;
+    opacity: 0;
+}
+
+.aProject p:hover{
+    padding-top: 250px;
+    opacity: 1;
+}
+
+.aProject:hover{
+    display: block;
+    opacity: 0.9;
+}
