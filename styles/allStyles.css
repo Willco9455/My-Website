@@ -2,7 +2,6 @@ body{
     font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
     background: url("../images/cow\ and\ calf.jpg")no-repeat center center fixed;
     background-size: cover;
-    color: white;
 }
 
 .banner h1 {
@@ -30,4 +29,5 @@ a{
 
 h2{
     text-align: center;
+    margin: none;
 }
