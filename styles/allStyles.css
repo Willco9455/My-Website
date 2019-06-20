@@ -1,6 +1,6 @@
 body{
     font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
-    background-image: url("../images/cow\ and\ calf.jpg");
+    background: url("../images/cow\ and\ calf.jpg") no-repeat center center fixed;
     background-size: cover;
     background-attachment: scroll;
 }
