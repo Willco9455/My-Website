@@ -83,12 +83,14 @@ function myFunction() {
         }
 
     };
-
+    
     
     var rows = puzzle.getRows();
     var colums = puzzle.getSquares();
-    // console.log((puzzle.getRows()));
-    // document.getElementById("change").innerHTML=puzzle.getRows();
+    var squares = puzzle.getSquares();
+    console.log(rows + " colums -----> " + colums + " squares -----> " + squares);
+
+    
 
 
 }
