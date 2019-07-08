@@ -1,3 +1,8 @@
 .numberBox{
     width: 9px
 }
+#inputBoxesWrapper{
+    display: block;
+    padding-left: 40%;
+ 
+}
