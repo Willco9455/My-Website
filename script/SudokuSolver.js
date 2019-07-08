@@ -78,21 +78,57 @@ function myFunction() {
                     squares[8].push((this.getRows()[z])[y]);
                 }
             }
-                    
-            console.log(squares);      
+            return squares;     
         }
 
     };
     
-    
     // var rows = [["","6","","1","","8","","3",""],["","","3","","6","","9","5",""],["4","","","","2","","","","6"],["7","","","","4"],[],[],[],[],[]];  //puzzle.getRows();
-    var colums = [[],[],[],[],[],[],[],[],[]]; //puzzle.getSquares();
-    var squares = [[],[],[],[],[],[],[],[],[]]; //puzzle.getSquares();
+    printOutTheArrays:{
+        if(true==false){
+            document.write("[")
+            for(x=0;x<=8;x++){
+                document.write("[")
+                for(i of rows[x]){
+                    document.write('"' + i + '",');
+                }
+                document.write("],")
+            }
+            document.write("]")
+            document.write("</br></br>")
+            
+            document.write("[")
+            for(x=0;x<=8;x++){
+                document.write("[")
+                for(i of colums[x]){
+                    document.write('"' + i + '",');
+                }
+                document.write("],")
+            }
+            document.write("]")
+            document.write("</br></br>")
+            
+            
+            document.write("[")
+            for(x=0;x<=8;x++){
+                document.write("[")
+                for(i of squares[x]){
+                    document.write('"' + i + '",');
+                }
+                document.write("],")
+            }
+            document.write("]")
+        }
+    } 
+    //info about soduku number 20
+    var rows = [["","6","","1","","8","","3",""],["","","3","","6","","9","5",""],["4","","","","2","","","","6"],["7","","","","4","","","","8"],["","3","5","7","","6","4","2",""],["6","","","","3","","","","7"],["1","","","5","","2","","","3"],["","4","6","","1","","2","",""],["","9","","","7","","","1",""]];
+    var colums = [["","","4","7","","6","1","",""],["6","","","","3","","","4","9"],["","3","","","5","","","6",""],["1","","","","7","","5","",""],["","6","2","4","","3","","1","7"],["8","","","","6","","2","",""],["","9","","","4","","","2",""],["3","5","","","2","","","","1"],["","","6","8","","7","3","",""]]; //puzzle.getSquares();
+    var squares = [["","6","","","","3","4","",""],["1","","8","","6","","","2",""],["","3","","9","5","","","","6"],["7","","","","3","5","6","",""],["","4","","7","","6","","3",""],["","","8","4","2","","","","7"],["1","","","","4","6","","9",""],["5","","2","","1","","","7",""],["","","3","2","","","","1",""]]; //puzzle.getSquares();
     
-    for(x=0;x<=8;x++){
-        puzzle.getRows()[x]
+    console.log(rows);
+    console.log(colums);
+    console.log(squares);
+    
 
-    }
-    console.log(rows + " colums -----> " + colums + " squares -----> " + squares);
-
+    
 }
