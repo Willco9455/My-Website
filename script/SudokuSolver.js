@@ -1,7 +1,7 @@
 function myFunction() {
     var puzzle = {
 
-        //this is where the rows are stored when entered -----> in puzzle.rows
+        //this is where the rows are stored when entered -----> in puzzle.getRows()
         getRows: function(){
             var rows = [[],[],[],[],[],[],[],[],[]];
             for(x=0;x<=8;x++){
@@ -9,7 +9,6 @@ function myFunction() {
                     rows[x].push(document.getElementById((String(x)) + (String(y))).value);  
                 }
             }
-            console.log(rows);
             return rows;
         },
 
@@ -19,17 +18,77 @@ function myFunction() {
             var colums = [[],[],[],[],[],[],[],[],[]];
             for(x=0;x<=8;x++){ 
                 for(y=0;y<=8;y++){
-                    colums[x].push((this.rows[y])[x]);
+                    colums[x].push((this.getRows()[y])[x]);
                 }
             } 
             return colums; //returns the full list of colums
         },
-        //this is the operation that generates the squares of the puzzle =====
-        squares: function(){
+        //this is the operation that generates the squares of the puzzle ---> in puzzle.getSquares()
+        getSquares: function(){
+            var y,z;
             var squares = [[],[],[],[],[],[],[],[],[]];
             
+            //for top row of boxes
+            for(z=0;z<=2;z++){
+                for(y=0;y<=2;y++){
+                    squares[0].push((this.getRows()[z])[y]);
+                }
+            }
+            for(z=0;z<=2;z++){
+                for(y=3;y<=5;y++){
+                    squares[1].push((this.getRows()[z])[y]);
+                }
+            }
+            for(z=0;z<=2;z++){
+                for(y=6;y<=8;y++){
+                    squares[2].push((this.getRows()[z])[y]);
+                }
+            }
+
+            //for second row of boxes
+            for(z=3;z<=5;z++){
+                for(y=0;y<=2;y++){
+                    squares[3].push((this.getRows()[z])[y]);
+                }
+            }
+            for(z=3;z<=5;z++){
+                for(y=3;y<=5;y++){
+                    squares[4].push((this.getRows()[z])[y]);
+                }
+            }
+            for(z=3;z<=5;z++){
+                for(y=6;y<=8;y++){
+                    squares[5].push((this.getRows()[z])[y]);
+                }
+            }
+
+            //third set of rows
+            for(z=6;z<=8;z++){
+                for(y=0;y<=2;y++){
+                    squares[6].push((this.getRows()[z])[y]);
+                }
+            }
+            for(z=6;z<=8;z++){
+                for(y=3;y<=5;y++){
+                    squares[7].push((this.getRows()[z])[y]);
+                }
+            }
+            for(z=6;z<=8;z++){
+                for(y=6;y<=8;y++){
+                    squares[8].push((this.getRows()[z])[y]);
+                }
+            }
+                    
+            console.log(squares);      
         }
+
     };
+
     
-    console.log(puzzle.getRows())
+    var rows = puzzle.getRows();
+    var colums = puzzle.getSquares();
+    // console.log((puzzle.getRows()));
+    // document.getElementById("change").innerHTML=puzzle.getRows();
+
+
 }
