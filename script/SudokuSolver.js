@@ -85,12 +85,14 @@ function myFunction() {
     };
     
     
-    var rows = puzzle.getRows();
-    var colums = puzzle.getSquares();
-    var squares = puzzle.getSquares();
-    console.log(rows + " colums -----> " + colums + " squares -----> " + squares);
-
+    // var rows = [["","6","","1","","8","","3",""],["","","3","","6","","9","5",""],["4","","","","2","","","","6"],["7","","","","4"],[],[],[],[],[]];  //puzzle.getRows();
+    var colums = [[],[],[],[],[],[],[],[],[]]; //puzzle.getSquares();
+    var squares = [[],[],[],[],[],[],[],[],[]]; //puzzle.getSquares();
     
+    for(x=0;x<=8;x++){
+        puzzle.getRows()[x]
 
+    }
+    console.log(rows + " colums -----> " + colums + " squares -----> " + squares);
 
 }
