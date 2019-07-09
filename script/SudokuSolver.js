@@ -123,11 +123,67 @@ function myFunction() {
     var rows = [["","6","","1","","8","","3",""],["","","3","","6","","9","5",""],["4","","","","2","","","","6"],["7","","","","4","","","","8"],["","3","5","7","","6","4","2",""],["6","","","","3","","","","7"],["1","","","5","","2","","","3"],["","4","6","","1","","2","",""],["","9","","","7","","","1",""]];
     var colums = [["","","4","7","","6","1","",""],["6","","","","3","","","4","9"],["","3","","","5","","","6",""],["1","","","","7","","5","",""],["","6","2","4","","3","","1","7"],["8","","","","6","","2","",""],["","9","","","4","","","2",""],["3","5","","","2","","","","1"],["","","6","8","","7","3","",""]]; //puzzle.getSquares();
     var squares = [["","6","","","","3","4","",""],["1","","8","","6","","","2",""],["","3","","9","5","","","","6"],["7","","","","3","5","6","",""],["","4","","7","","6","","3",""],["","","8","4","2","","","","7"],["1","","","","4","6","","9",""],["5","","2","","1","","","7",""],["","","3","2","","","","1",""]]; //puzzle.getSquares();
-    
+    var numbersNeeded = ["1","2","3","4","5","6","7","8","9"];
     console.log(rows);
     console.log(colums);
     console.log(squares);
     
+    function findColumn(positionOfCharacter){   //WORKS!
+        return colums[positionOfCharacter]
+    };
+    function findSquare(positionOfCharacter,rowNumber){ //WORKS!
+        if(rowNumber<=2){
+            if(positionOfCharacter<=2){
+                return squares[0]
+            }
+            else if(positionOfCharacter<=5){
+                return squares[1]
+            }
+            else{
+                return squares[2]
+            }
+        }
+        else if(rowNumber<=5){
+            if(positionOfCharacter<=2){
+                return squares[3]
+            }
+            else if(positionOfCharacter<=5){
+                return squares[4]
+            }
+            else{
+                return squares[5]
+            }
 
-    
+        }
+        else{
+            if(positionOfCharacter<=2){
+                return squares[6]
+            }
+            else if(positionOfCharacter<=5){
+                return squares[7]
+            }
+            else{
+                return squares[8]
+            }
+        }
+    }
+    function searchRow(rowNumber){  //WORKS!
+        var i;
+        for(i=0;i<=8;i++){
+            if(numbersNeeded.includes(rows[rowNumber][i])==false){
+                return (i)
+            }
+            else{
+                continue;
+            }
+        }
+    }
+
+
+    rows[0][0] = "1";
+    console.log(searchRow(0));
+    var solved = false;
+    // while(solved == false){
+        
+    // }
 }
