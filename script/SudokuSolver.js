@@ -167,11 +167,14 @@ function myFunction() {
             }
         }
     }
-    function searchRow(rowNumber){  //WORKS!
+    function searchRow(row){  //WORKS!
         var i;
         for(i=0;i<=8;i++){
-            if(numbersNeeded.includes(rows[rowNumber][i])==false){
+            if(numbersNeeded.includes(row[i])==false){
                 return (i)
+            }
+            else if(i == 8){
+                return false;
             }
             else{
                 continue;
@@ -180,9 +183,53 @@ function myFunction() {
     }
 
 
-    console.log(searchRow(0));
-    var solved = false;
-    // while(solved == false){
-        
+    // for(i=0;i<=8;i++){
+label:{
+        var i = 0;
+        var rowCopy = rows[i].slice();
+        var search = searchRow(rowCopy)
+        while (search !== false){
+
+            var possition = searchRow(rowCopy)
+            var column = findColumn(search);
+            var square = findSquare(searchRow(rowCopy),i);
+            console.log(rowCopy);
+            console.log(column);
+            console.log(square);
+            var possibelNums = numbersNeeded;
+            var x;
+            for(x of rowCopy){  //removes nubers that cannot be the solution becasue they are part if the row
+                if(possibelNums.includes(x) == true){
+                    var index = possibelNums.indexOf(x);
+                    possibelNums.splice(index,1); 
+                }
+                
+            }
+            for(x of column){  //removes nubers that cannot be the solution becasue they are part if the collumn
+                if(possibelNums.includes(x) == true){
+                    var index = possibelNums.indexOf(x);
+                    possibelNums.splice(index,1); 
+                }
+                
+            }
+            for(x of square){  //removes nubers that cannot be the solution becasue they are part if the square
+                if(possibelNums.includes(x) == true){
+                    var index = possibelNums.indexOf(x);
+                    possibelNums.splice(index,1); 
+                }
+                
+            }
+            if (possibelNums.length == 1){
+                rows[i][possition] = possibelNums[0];
+                rowCopy[possition] = possibelNums[0];
+            }else{
+                rowCopy[possition] = "no-result-found";
+            }
+            console.log(rowCopy);
+            search = searchRow(rowCopy);
+            console.log(search);
+            break
+        }
+    }      
     // }
 }
