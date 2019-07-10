@@ -13,69 +13,69 @@ function myFunction() {
         },
 
         //this is the operation insidel the puzzle object that creates the collums ---> accessed with puzzle.getcolums()
-        getColums: function(){
+        getColums: function(rows){
             var x,y;
             var colums = [[],[],[],[],[],[],[],[],[]];
             for(x=0;x<=8;x++){ 
                 for(y=0;y<=8;y++){
-                    colums[x].push((this.getRows()[y])[x]);
+                    colums[x].push((rows[y])[x]);
                 }
             } 
             return colums; //returns the full list of colums
         },
         //this is the operation that generates the squares of the puzzle ---> in puzzle.getSquares()
-        getSquares: function(){
+        getSquares: function(rows){
             var y,z;
             var squares = [[],[],[],[],[],[],[],[],[]];
             
             //for top row of boxes
             for(z=0;z<=2;z++){
                 for(y=0;y<=2;y++){
-                    squares[0].push((this.getRows()[z])[y]);
+                    squares[0].push((rows[z])[y]);
                 }
             }
             for(z=0;z<=2;z++){
                 for(y=3;y<=5;y++){
-                    squares[1].push((this.getRows()[z])[y]);
+                    squares[1].push((rows[z])[y]);
                 }
             }
             for(z=0;z<=2;z++){
                 for(y=6;y<=8;y++){
-                    squares[2].push((this.getRows()[z])[y]);
+                    squares[2].push((rows[z])[y]);
                 }
             }
 
             //for second row of boxes
             for(z=3;z<=5;z++){
                 for(y=0;y<=2;y++){
-                    squares[3].push((this.getRows()[z])[y]);
+                    squares[3].push((rows[z])[y]);
                 }
             }
             for(z=3;z<=5;z++){
                 for(y=3;y<=5;y++){
-                    squares[4].push((this.getRows()[z])[y]);
+                    squares[4].push((rows[z])[y]);
                 }
             }
             for(z=3;z<=5;z++){
                 for(y=6;y<=8;y++){
-                    squares[5].push((this.getRows()[z])[y]);
+                    squares[5].push((rows[z])[y]);
                 }
             }
 
             //third set of rows
             for(z=6;z<=8;z++){
                 for(y=0;y<=2;y++){
-                    squares[6].push((this.getRows()[z])[y]);
+                    squares[6].push((rows[z])[y]);
                 }
             }
             for(z=6;z<=8;z++){
                 for(y=3;y<=5;y++){
-                    squares[7].push((this.getRows()[z])[y]);
+                    squares[7].push((rows[z])[y]);
                 }
             }
             for(z=6;z<=8;z++){
                 for(y=6;y<=8;y++){
-                    squares[8].push((this.getRows()[z])[y]);
+                    squares[8].push((rows[z])[y]);
                 }
             }
             return squares;     
@@ -120,9 +120,12 @@ function myFunction() {
     } 
     
     //info about soduku number 20
-    var rows = [["","6","","1","","8","","3",""],["","","3","","6","","9","5",""],["4","","","","2","","","","6"],["7","","","","4","","","","8"],["","3","5","7","","6","4","2",""],["6","","","","3","","","","7"],["1","","","5","","2","","","3"],["","4","6","","1","","2","",""],["","9","","","7","","","1",""]];
-    var colums = [["","","4","7","","6","1","",""],["6","","","","3","","","4","9"],["","3","","","5","","","6",""],["1","","","","7","","5","",""],["","6","2","4","","3","","1","7"],["8","","","","6","","2","",""],["","9","","","4","","","2",""],["3","5","","","2","","","","1"],["","","6","8","","7","3","",""]]; //puzzle.getSquares();
-    var squares = [["","6","","","","3","4","",""],["1","","8","","6","","","2",""],["","3","","9","5","","","","6"],["7","","","","3","5","6","",""],["","4","","7","","6","","3",""],["","","8","4","2","","","","7"],["1","","","","4","6","","9",""],["5","","2","","1","","","7",""],["","","3","2","","","","1",""]]; //puzzle.getSquares();
+    // var rows = [["","6","","1","","8","","3",""],["","","3","","6","","9","5",""],["4","","","","2","","","","6"],["7","","","","4","","","","8"],["","3","5","7","","6","4","2",""],["6","","","","3","","","","7"],["1","","","5","","2","","","3"],["","4","6","","1","","2","",""],["","9","","","7","","","1",""]];
+    // var colums = [["","","4","7","","6","1","",""],["6","","","","3","","","4","9"],["","3","","","5","","","6",""],["1","","","","7","","5","",""],["","6","2","4","","3","","1","7"],["8","","","","6","","2","",""],["","9","","","4","","","2",""],["3","5","","","2","","","","1"],["","","6","8","","7","3","",""]]; //puzzle.getSquares();
+    // var squares = [["","6","","","","3","4","",""],["1","","8","","6","","","2",""],["","3","","9","5","","","","6"],["7","","","","3","5","6","",""],["","4","","7","","6","","3",""],["","","8","4","2","","","","7"],["1","","","","4","6","","9",""],["5","","2","","1","","","7",""],["","","3","2","","","","1",""]]; //puzzle.getSquares();
+    var rows = puzzle.getRows();
+    var colums = puzzle.getColums(rows);
+    var squares = puzzle.getSquares(rows);
     var numbersNeeded = ["1","2","3","4","5","6","7","8","9"];
     console.log(rows);
     console.log(colums);
@@ -175,6 +178,7 @@ function myFunction() {
                     return (i)
                 }
                 else if(i == 8){
+
                     return false;
                 }
                 else{}
@@ -182,54 +186,72 @@ function myFunction() {
             }else{}
         }
     }
-
-
-    // for(i=0;i<=8;i++){
-label:{
-        var i = 0;
-        var rowCopy = rows[i].slice();
-        var search = searchRow(rowCopy)
-        while (search !== false){
-
-            var possition = searchRow(rowCopy)
-            var column = findColumn(search);
-            var square = findSquare(searchRow(rowCopy),i);
-            console.log(rowCopy);
-            console.log(column);
-            console.log(square);
-            var possibelNums = numbersNeeded.slice();
-            var x;
-            for(x of rowCopy){  //removes nubers that cannot be the solution becasue they are part if the row
-                if(possibelNums.includes(x) == true){
-                    var index = possibelNums.indexOf(x);
-                    possibelNums.splice(index,1); 
+    var attemtCounter = 0;
+    var solved = false;
+    while(solved == false){ // this is the main body of the code
+        colums = puzzle.getColums(rows);
+        squares = puzzle.getSquares(rows)
+        for(i=0;i<=8;i++){ //solves all rows that it can
+            var rowCopy = rows[i].slice();
+            var search = searchRow(rowCopy)
+            while (typeof search == 'number'){
+                var possition = searchRow(rowCopy)
+                var column = findColumn(search);
+                var square = findSquare(searchRow(rowCopy),i);
+                var possibelNums = numbersNeeded.slice();
+                var x;
+                for(x of rowCopy){  //removes nubers that cannot be the solution becasue they are part if the row
+                    if(possibelNums.includes(x) == true){
+                        var index = possibelNums.indexOf(x);
+                        possibelNums.splice(index,1); 
+                    }
+                    
                 }
+                for(x of column){  //removes nubers that cannot be the solution becasue they are part if the collumn
+                    if(possibelNums.includes(x) == true){
+                        var index = possibelNums.indexOf(x);
+                        possibelNums.splice(index,1); 
+                    }
+                    
+                }
+                for(x of square){  //removes nubers that cannot be the solution becasue they are part if the square
+                    if(possibelNums.includes(x) == true){
+                        var index = possibelNums.indexOf(x);
+                        possibelNums.splice(index,1); 
+                    }
+                    
+                }
+                if (possibelNums.length == 1){
+                    rows[i][possition] = possibelNums[0];
+                    rowCopy[possition] = possibelNums[0];
+                }else{
+                    rowCopy[possition] = "notFound";
+                }
+                search = searchRow(rowCopy);
                 
             }
-            for(x of column){  //removes nubers that cannot be the solution becasue they are part if the collumn
-                if(possibelNums.includes(x) == true){
-                    var index = possibelNums.indexOf(x);
-                    possibelNums.splice(index,1); 
-                }
-                
-            }
-            for(x of square){  //removes nubers that cannot be the solution becasue they are part if the square
-                if(possibelNums.includes(x) == true){
-                    var index = possibelNums.indexOf(x);
-                    possibelNums.splice(index,1); 
-                }
-                
-            }
-            if (possibelNums.length == 1){
-                rows[i][possition] = possibelNums[0];
-                rowCopy[possition] = possibelNums[0];
-            }else{
-                rowCopy[possition] = "notFound";
-            }
-            console.log(rowCopy);
-            search = searchRow(rowCopy);
-            console.log(search);
         }
-    }      
-    // }
+        numOfNum = 0
+        for(a of rows){ //stores the total number of numbers as numOfNum
+            for(b of a){
+                if(numbersNeeded.includes(b) == true){
+                    numOfNum += 1
+                }
+            }
+        }
+        //this if and else sets solved to true if the puzzle has been solved
+        if(numOfNum == 81){
+            solved = true;
+        }
+        else if (attemtCounter > 1000){
+            solved = true;
+        }
+        else{
+            solved = false
+        }
+        attemtCounter += 1
+    }
+
+    console.log(rows)
+    
 }
