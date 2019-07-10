@@ -170,15 +170,16 @@ function myFunction() {
     function searchRow(row){  //WORKS!
         var i;
         for(i=0;i<=8;i++){
-            if(numbersNeeded.includes(row[i])==false){
-                return (i)
-            }
-            else if(i == 8){
-                return false;
-            }
-            else{
-                continue;
-            }
+            if(row[i] !== "notFound"){
+                if(numbersNeeded.includes(row[i])==false){
+                    return (i)
+                }
+                else if(i == 8){
+                    return false;
+                }
+                else{}
+                
+            }else{}
         }
     }
 
@@ -196,7 +197,7 @@ label:{
             console.log(rowCopy);
             console.log(column);
             console.log(square);
-            var possibelNums = numbersNeeded;
+            var possibelNums = numbersNeeded.slice();
             var x;
             for(x of rowCopy){  //removes nubers that cannot be the solution becasue they are part if the row
                 if(possibelNums.includes(x) == true){
@@ -223,12 +224,11 @@ label:{
                 rows[i][possition] = possibelNums[0];
                 rowCopy[possition] = possibelNums[0];
             }else{
-                rowCopy[possition] = "no-result-found";
+                rowCopy[possition] = "notFound";
             }
             console.log(rowCopy);
             search = searchRow(rowCopy);
             console.log(search);
-            break
         }
     }      
     // }
