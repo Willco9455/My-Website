@@ -1,6 +1,6 @@
 body{
     font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace;
-    background: url("../images/cow\ and\ calf.jpg")no-repeat center center fixed;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/c/c4/Cowcalf.jpg")no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -8,6 +8,7 @@ body{
     margin:0px;
     font-size: 30px;
     float: left;
+    
 }
 
 .banner ul{
@@ -23,8 +24,13 @@ body{
 
 a{
     text-decoration: none;
-    color: black;
+    color: white;
     padding-bottom: 100px;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 h2{

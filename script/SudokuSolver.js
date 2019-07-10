@@ -180,7 +180,6 @@ function myFunction() {
     }
 
 
-    rows[0][0] = "1";
     console.log(searchRow(0));
     var solved = false;
     // while(solved == false){
