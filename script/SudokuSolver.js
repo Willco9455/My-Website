@@ -1,4 +1,4 @@
-function myFunction() {
+function solve() {
     var puzzle = {
 
         //this is where the rows are stored when entered -----> in puzzle.getRows()
@@ -120,13 +120,14 @@ function myFunction() {
     } 
     
     //info about soduku number 20
-    // var rows = [["","6","","1","","8","","3",""],["","","3","","6","","9","5",""],["4","","","","2","","","","6"],["7","","","","4","","","","8"],["","3","5","7","","6","4","2",""],["6","","","","3","","","","7"],["1","","","5","","2","","","3"],["","4","6","","1","","2","",""],["","9","","","7","","","1",""]];
-    // var colums = [["","","4","7","","6","1","",""],["6","","","","3","","","4","9"],["","3","","","5","","","6",""],["1","","","","7","","5","",""],["","6","2","4","","3","","1","7"],["8","","","","6","","2","",""],["","9","","","4","","","2",""],["3","5","","","2","","","","1"],["","","6","8","","7","3","",""]]; //puzzle.getSquares();
-    // var squares = [["","6","","","","3","4","",""],["1","","8","","6","","","2",""],["","3","","9","5","","","","6"],["7","","","","3","5","6","",""],["","4","","7","","6","","3",""],["","","8","4","2","","","","7"],["1","","","","4","6","","9",""],["5","","2","","1","","","7",""],["","","3","2","","","","1",""]]; //puzzle.getSquares();
-    var rows = puzzle.getRows();
-    var colums = puzzle.getColums(rows);
-    var squares = puzzle.getSquares(rows);
+    var rows = [["","6","","1","","8","","3",""],["","","3","","6","","9","5",""],["4","","","","2","","","","6"],["7","","","","4","","","","8"],["","3","5","7","","6","4","2",""],["6","","","","3","","","","7"],["1","","","5","","2","","","3"],["","4","6","","1","","2","",""],["","9","","","7","","","1",""]];
+    var colums = [["","","4","7","","6","1","",""],["6","","","","3","","","4","9"],["","3","","","5","","","6",""],["1","","","","7","","5","",""],["","6","2","4","","3","","1","7"],["8","","","","6","","2","",""],["","9","","","4","","","2",""],["3","5","","","2","","","","1"],["","","6","8","","7","3","",""]]; //puzzle.getSquares();
+    var squares = [["","6","","","","3","4","",""],["1","","8","","6","","","2",""],["","3","","9","5","","","","6"],["7","","","","3","5","6","",""],["","4","","7","","6","","3",""],["","","8","4","2","","","","7"],["1","","","","4","6","","9",""],["5","","2","","1","","","7",""],["","","3","2","","","","1",""]]; //puzzle.getSquares();
+    // var rows = puzzle.getRows();
+    // var colums = puzzle.getColums(rows);
+    // var squares = puzzle.getSquares(rows);
     var numbersNeeded = ["1","2","3","4","5","6","7","8","9"];
+    var possitions = ["0","1","2","3","4","5","6","7","8"];
     console.log(rows);
     console.log(colums);
     console.log(squares);
@@ -186,51 +187,98 @@ function myFunction() {
             }else{}
         }
     }
-    var attemtCounter = 0;
-    var solved = false;
-    while(solved == false){ // this is the main body of the code
-        colums = puzzle.getColums(rows);
-        squares = puzzle.getSquares(rows)
-        for(i=0;i<=8;i++){ //solves all rows that it can
-            var rowCopy = rows[i].slice();
-            var search = searchRow(rowCopy)
-            while (typeof search == 'number'){
-                var possition = searchRow(rowCopy)
-                var column = findColumn(search);
-                var square = findSquare(searchRow(rowCopy),i);
-                var possibelNums = numbersNeeded.slice();
-                var x;
-                for(x of rowCopy){  //removes nubers that cannot be the solution becasue they are part if the row
-                    if(possibelNums.includes(x) == true){
-                        var index = possibelNums.indexOf(x);
-                        possibelNums.splice(index,1); 
-                    }
-                    
-                }
-                for(x of column){  //removes nubers that cannot be the solution becasue they are part if the collumn
-                    if(possibelNums.includes(x) == true){
-                        var index = possibelNums.indexOf(x);
-                        possibelNums.splice(index,1); 
-                    }
-                    
-                }
-                for(x of square){  //removes nubers that cannot be the solution becasue they are part if the square
-                    if(possibelNums.includes(x) == true){
-                        var index = possibelNums.indexOf(x);
-                        possibelNums.splice(index,1); 
-                    }
-                    
-                }
-                if (possibelNums.length == 1){
-                    rows[i][possition] = possibelNums[0];
-                    rowCopy[possition] = possibelNums[0];
-                }else{
-                    rowCopy[possition] = "notFound";
-                }
-                search = searchRow(rowCopy);
-                
+    function findRowGivenSquare(positonOfCharacter,squareNumber){
+        if(squareNumber <= 2 ){ //will be one of the first three rows
+            if(positonOfCharacter <= 2){
+                return rows[0];
+            }
+            else if(positonOfCharacter <=5){
+                return rows[1];
+            }
+            else{
+                return rows[2];
             }
         }
+        if(squareNumber <= 5 ){ //will be one of the middle rows
+            if(positonOfCharacter <= 2){
+                return rows[3];
+            }
+            else if(positonOfCharacter <=5){
+                return rows[4];
+            }
+            else{
+                return rows[5];
+            }
+        }
+        if(squareNumber <= 8 ){ //will be one of the middle rows
+            if(positonOfCharacter <= 2){
+                return rows[6];
+            }
+            else if(positonOfCharacter <=5){
+                return rows[7];
+            }
+            else{
+                return rows[8];
+            }
+        }
+    }
+    var attemtCounter = 0;
+    var solved = false;
+    // while(solved == false){ // this is the main body of the code
+        if(true == false){//keeps the first method from running
+            method1:{ //the simple method use to make easier sudoku later 
+                colums = puzzle.getColums(rows);
+                squares = puzzle.getSquares(rows)
+                for(i=0;i<=8;i++){ //solves all rows that it can
+                    var rowCopy = rows[i].slice();
+                    var search = searchRow(rowCopy)
+                    while (typeof search == 'number'){
+                        var possition = searchRow(rowCopy)
+                        var column = findColumn(search);
+                        var square = findSquare(searchRow(rowCopy),i);
+                        var possibelNums = numbersNeeded.slice();
+                        var x;
+                        for(x of rowCopy){  //removes nubers that cannot be the solution becasue they are part if the row
+                            if(possibelNums.includes(x) == true){
+                                var index = possibelNums.indexOf(x);
+                                possibelNums.splice(index,1); 
+                            }
+                            
+                        }
+                        for(x of column){  //removes nubers that cannot be the solution becasue they are part if the collumn
+                            if(possibelNums.includes(x) == true){
+                                var index = possibelNums.indexOf(x);
+                                possibelNums.splice(index,1); 
+                            }
+                            
+                        }
+                        for(x of square){  //removes nubers that cannot be the solution becasue they are part if the square
+                            if(possibelNums.includes(x) == true){
+                                var index = possibelNums.indexOf(x);
+                                possibelNums.splice(index,1); 
+                            }
+                            
+                        }
+                        if (possibelNums.length == 1){
+                            rows[i][possition] = possibelNums[0];
+                            rowCopy[possition] = possibelNums[0];
+                        }else{
+                            rowCopy[possition] = "notFound";
+                        }
+                        search = searchRow(rowCopy);
+                        
+                    }
+                }
+            }
+        }
+
+
+        method2:{
+            for(i=1;i<=9;i++){// this loops through all the numbers to test through
+                console.log(findRowGivenSquare(0,(i-1)));
+            } 
+        }
+
         numOfNum = 0
         for(a of rows){ //stores the total number of numbers as numOfNum
             for(b of a){
@@ -250,7 +298,7 @@ function myFunction() {
             solved = false
         }
         attemtCounter += 1
-    }
+    // }
 
     console.log(rows)
     
