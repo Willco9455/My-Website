@@ -350,7 +350,7 @@ function solve() {
                         }else if(row.includes(String(x))){
                             square[search] = "checked";
                         }else{   
-                            if(possiblePos == ""){
+                            if(possiblePos == " "){
                                 possiblePos = search;
                                 square[search] = "checked"
                             }else{
